@@ -47,6 +47,7 @@ public class WordSearch {
 			leftToRight(search);
 			rightToLeft(search);
 			Up(search);
+			Down(search);
 		}
 	}
 	
@@ -142,6 +143,38 @@ public class WordSearch {
 					System.out.print(word + ":");
 					//find the row its in
 					for (int row = j + counter - 1; row >= j; row--) {
+						System.out.print(" " + "(" + i + "," + row + ")");
+						counter = 0;
+					}
+					wordSearch = word;
+					System.out.println("");
+				}
+			}
+		}
+		
+		return wordSearch;
+	}
+	
+	//write a function that reads down from top to bottom
+	//the opposite of the function above
+	//@Params word = the word to search
+	public static String Down(String word) {
+		int counter = 0;
+		int counter1 = 0;
+		String wordSearch = "";
+		for (int i = 0; i < grid[counter1].length; i++) {
+			//need to iterate through the grid by going down
+			//it will be adding to the values
+			for (int j = 0; j < grid.length; j++) {
+				if(word.charAt(counter) == grid[j][i]) {
+					counter++;
+				}
+				else {
+					counter = 0;
+				}
+				if (counter == word.length()) {
+					System.out.print(word + ":");
+					for (int row = j - counter + 1; row <= j; row++) {
 						System.out.print(" " + "(" + i + "," + row + ")");
 						counter = 0;
 					}
