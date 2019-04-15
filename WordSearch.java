@@ -48,6 +48,8 @@ public class WordSearch {
 			rightToLeft(search);
 			Up(search);
 			Down(search);
+			diagUpRight(search);
+			diagDownRight(search);
 		}
 	}
 	
@@ -178,6 +180,88 @@ public class WordSearch {
 						System.out.print(" " + "(" + i + "," + row + ")");
 						counter = 0;
 					}
+					wordSearch = word;
+					System.out.println("");
+				}
+			}
+		}
+		
+		return wordSearch;
+	}
+	
+	//write a function to read words diagonally up to the right
+	//it will be sort of a zig zag type function
+	//@Params word = the word to search
+	public static String diagUpRight(String word) {
+		int counter = 0;
+		int counter1 = 0;
+		String wordSearch = "";
+		for (int i = 0; i < grid.length; i++) {
+			counter1 = i;
+			for (int j = 0; j < grid[i].length; j++) {
+				if (word.charAt(counter) == grid[counter1][j]) {
+					counter++;
+					counter1--;
+					if (counter < 0) {
+						//if the counter is less than zero....break
+						//cannot be out of bounds
+						break;
+					}
+					else {
+						counter = 0;
+						counter1 = i;
+					}
+					if (counter == word.length()) {
+						System.out.print(word + ":");
+						counter1 = i;
+						for (int col = j - counter + 1; col <= j; col++) {
+							System.out.print(" " + "(" + col + "," + counter1 + ")");
+							counter = 0;
+							counter1--;
+						}	
+						counter1 = 0;
+						wordSearch = word;
+						System.out.println("");
+					}
+				}
+			}
+		}
+		
+		return wordSearch;
+	}
+	
+	//write the function to read words diagonally down right
+	//it will be sort of a zig zag type function
+	//@Params word = the word to search
+	public static String diagDownRight(String word) {
+		int counter = 0;
+		int counter1 = 0;
+		String wordSearch = "";
+		for (int i = 0; i < grid.length; i++) {
+			counter1 = i;
+			for (int j = 0; j < grid[i].length; j++) {
+				if (word.charAt(counter) == grid[counter1][j]) {
+					counter++;
+					counter1++;
+					if (counter1 >= grid.length) {
+						//if the counter goes over the length of the whole grid, break
+						//no out of bounds
+						break;
+					}
+				}
+				else {
+					counter = 0;
+					counter1 = i;
+				}
+				if (counter == word.length()) {
+					System.out.print(word + ":");
+					counter1 = i;
+					for (int col = j - counter + 1; col <= j; col++) {
+						System.out.print(" " + "(" + col + "," + counter1 + ")");
+						counter = 0;
+						counter1++;
+					}
+					counter1 = 0;
 					wordSearch = word;
 					System.out.println("");
 				}
