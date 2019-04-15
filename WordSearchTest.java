@@ -25,7 +25,15 @@ public class WordSearchTest {
 	@Test
 	public void Up() {
 		WordSearch up = new WordSearch();
-		String word = up.Up("");
+		String word = up.Up("KHAN");
+		assertEquals("KHAN", word);
+	}
+	
+	//test for reading down the grid
+	@Test
+	public void Down() {
+		WordSearch down = new WordSearch();
+		String word = down.Down("");
 		assertEquals("", word);
 	}
 }
