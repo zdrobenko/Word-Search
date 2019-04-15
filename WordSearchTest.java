@@ -17,7 +17,15 @@ public class WordSearchTest {
 	@Test
 	public void RightToLeft () {
 		WordSearch rightToLeft = new WordSearch();
-		String word = rightToLeft.rightToLeft("");
+		String word = rightToLeft.rightToLeft("KIRK");
+		assertEquals("KIRK", word);
+	}
+	
+	//test for reading up the grid
+	@Test
+	public void Up() {
+		WordSearch up = new WordSearch();
+		String word = up.Up("");
 		assertEquals("", word);
 	}
 }
