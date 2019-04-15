@@ -38,10 +38,18 @@ public class WordSearchTest {
 	}
 	
 	//test for diagonally up right
-	@Test
+	/*@Test
 	public void DiagUpRight() {
 		WordSearch upRight = new WordSearch();
 		String word = upRight.diagUpRight("");
+		assertEquals("", word);
+	}*/
+	
+	//test for diagonally down right
+	@Test 
+	public void DiagDownRight() {
+		WordSearch downRight = new WordSearch();
+		String word = downRight.diagDownRight("");
 		assertEquals("", word);
 	}
 }
