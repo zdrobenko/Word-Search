@@ -49,7 +49,15 @@ public class WordSearchTest {
 	@Test 
 	public void DiagDownRight() {
 		WordSearch downRight = new WordSearch();
-		String word = downRight.diagDownRight("");
+		String word = downRight.diagDownRight("SPOCK");
+		assertEquals("SPOCK", word);
+	}
+	
+	//test for diagonally up left
+	@Test
+	public void DiagUpLeft() {
+		WordSearch upLeft = new WordSearch();
+		String word = upLeft.diagUpLeft("");
 		assertEquals("", word);
 	}
 }
