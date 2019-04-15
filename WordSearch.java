@@ -46,6 +46,7 @@ public class WordSearch {
 		for(String search : wordSearch) {
 			leftToRight(search);
 			rightToLeft(search);
+			Up(search);
 		}
 	}
 	
@@ -75,9 +76,10 @@ public class WordSearch {
 					counter = 0;
 				}
 				if (counter == word.length()) {
-					System.out.println(word + ":" + "\t");
+					System.out.print(word + ":");
+					//find the column its in
 					for (int col = j - counter + 1; col <= j; col++) {
-						System.out.println(" " + "(" + col + "," + i + ")");
+						System.out.print(" " + "(" + col + "," + i + ")");
 						counter = 0;
 					}
 					System.out.println("");
@@ -105,13 +107,46 @@ public class WordSearch {
 					counter = 0;
 				}
 				if (counter == word.length()) {
-					System.out.println(word + ":");
+					System.out.print(word + ":");
+					//find the column its in
 					for (int col = j + counter - 1; col >= j; col--) {
-						System.out.println(" " + "(" + col + "," + i + ")");
+						System.out.print(" " + "(" + col + "," + i + ")");
 						counter = 0;
 					}
 					System.out.println("");
 					wordSearch = word;
+				}
+			}
+		}
+		
+		return wordSearch;
+	}
+	
+	//write the function to read up on the grid
+	//it will read vertically up
+	//@Params word = the word to search
+	public static String Up(String word) {
+		int counter = 0;
+		int counter1 = 0;
+		String wordSearch = "";
+		for (int i = 0; i < grid[counter1].length; i++) {
+			//need to iterate through the grid by going backwards vertically
+			for (int j = grid[i].length - 1; j > 0; j--) {
+				if (word.charAt(counter) == grid[j][i]) {
+					counter++;
+				}
+				else {
+					counter = 0;
+				}
+				if (counter == word.length()) {
+					System.out.print(word + ":");
+					//find the row its in
+					for (int row = j + counter - 1; row >= j; row--) {
+						System.out.print(" " + "(" + i + "," + row + ")");
+						counter = 0;
+					}
+					wordSearch = word;
+					System.out.println("");
 				}
 			}
 		}
