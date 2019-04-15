@@ -33,7 +33,15 @@ public class WordSearchTest {
 	@Test
 	public void Down() {
 		WordSearch down = new WordSearch();
-		String word = down.Down("");
+		String word = down.Down("BONES");
+		assertEquals("BONES", word);
+	}
+	
+	//test for diagonally up right
+	@Test
+	public void DiagUpRight() {
+		WordSearch upRight = new WordSearch();
+		String word = upRight.diagUpRight("");
 		assertEquals("", word);
 	}
 }
