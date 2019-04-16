@@ -7,7 +7,7 @@ public class WordSearchTest {
 
 	//test for left to right reading
 	@Test
-	public void LeftToRigth() {
+	public void LeftToRigthTest() {
 		WordSearch leftToRight = new WordSearch();
 		String word = leftToRight.leftToRight("SCOTTY");
 		assertEquals("SCOTTY", word);
@@ -15,7 +15,7 @@ public class WordSearchTest {
 	
 	//test for right to left reading
 	@Test
-	public void RightToLeft () {
+	public void RightToLeftTest() {
 		WordSearch rightToLeft = new WordSearch();
 		String word = rightToLeft.rightToLeft("KIRK");
 		assertEquals("KIRK", word);
@@ -23,7 +23,7 @@ public class WordSearchTest {
 	
 	//test for reading up the grid
 	@Test
-	public void Up() {
+	public void UpTest() {
 		WordSearch up = new WordSearch();
 		String word = up.Up("KHAN");
 		assertEquals("KHAN", word);
@@ -31,23 +31,15 @@ public class WordSearchTest {
 	
 	//test for reading down the grid
 	@Test
-	public void Down() {
+	public void DownTest() {
 		WordSearch down = new WordSearch();
 		String word = down.Down("BONES");
 		assertEquals("BONES", word);
 	}
 	
-	//test for diagonally up right
-	/*@Test
-	public void DiagUpRight() {
-		WordSearch upRight = new WordSearch();
-		String word = upRight.diagUpRight("");
-		assertEquals("", word);
-	}*/
-	
 	//test for diagonally down right
 	@Test 
-	public void DiagDownRight() {
+	public void DiagDownRightTest() {
 		WordSearch downRight = new WordSearch();
 		String word = downRight.diagDownRight("SPOCK");
 		assertEquals("SPOCK", word);
@@ -55,7 +47,7 @@ public class WordSearchTest {
 	
 	//test for diagonally up left
 	@Test
-	public void DiagUpLeft() {
+	public void DiagUpLeftTest() {
 		WordSearch upLeft = new WordSearch();
 		String word = upLeft.diagUpLeft("SULU");
 		assertEquals("SULU", word);
@@ -63,9 +55,9 @@ public class WordSearchTest {
 	
 	//test for diagonally down left
 	@Test
-	public void DiagDownLeft() {
+	public void DiagDownLeftTest() {
 		WordSearch downLeft = new WordSearch();
-		String word = downLeft.diagDownLeft("");
-		assertEquals("", word);
+		String word = downLeft.diagDownLeft("UHURA");
+		assertEquals("UHURA", word);
 	}
 }

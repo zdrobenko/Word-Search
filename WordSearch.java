@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class WordSearch {
 	
 	//create a 2D array for the grid
-	static char grid[][] = {{'U','M','K','H','U','L', 'K','I','N','V','J','O','C','W','E'},
+	static char grid[][] = {{'U','M','K','H','U','L','K','I','N','V','J','O','C','W','E'},
 		{'L','L','S','H','K','Z','Z','W','Z','C','G','J','U','Y','G'},
 		{'H','S','U','P','J','P','R','J','D','H','S','B','X','T','G'},
 		{'B','R','J','S','O','E','Q','E','T','I','K','K','G','L','E'},
@@ -47,9 +47,10 @@ public class WordSearch {
 			rightToLeft(search);
 			Up(search);
 			Down(search);
-			//diagUpRight(search);
+			diagUpRight(search);
 			diagDownRight(search);
-			//diagUpLeft(search);
+			diagUpLeft(search);
+			diagDownLeft(search);
 		}
 	}
 	
@@ -280,7 +281,7 @@ public class WordSearch {
 		String wordSearch = "";
 		for (int i = 0; i < grid.length; i++) {
 			counter1 = i;
-			for (int j = grid[i].length - 1; j >= 0; j--) {
+			for (int j = grid[i].length - 1; j > 0; j--) {
 				if(word.charAt(counter) == grid[counter1][j]) {
 					counter++;
 					counter1--;
@@ -297,10 +298,10 @@ public class WordSearch {
 				if (counter == word.length()) {	
 					System.out.print(word + ":");
 					counter1 = i;
-					for (int col = j - counter + 1; col <= j; col++) {
+					for (int col = j + counter - 1; col >= j; col++) {
 						System.out.print(" " + "(" + col + "," + counter1 + ")");
 						counter = 0;
-						counter1++;
+						counter1--;
 					}
 					counter1 = 0;
 					wordSearch = word;
@@ -311,4 +312,43 @@ public class WordSearch {
 		
 		return wordSearch;
 	}		
+	
+	//write a function to read words diagonally down left
+	//it will be sort of a zig zag function
+	//@Params word = the word to be searched
+	public static String diagDownLeft(String word) {
+		int counter = 0;
+		int counter1 = 0;
+		String wordSearch = "";
+		for (int i = 0; i < grid.length; i++) {
+			counter1 = i;
+			for (int j = grid[i].length - 1; j > 0; j--) {
+				if (word.charAt(counter) == grid[counter1][j]) {
+					counter++;
+					counter1++;
+					if (counter1 >= grid.length) {
+						break;
+					}
+				}
+				else {
+					counter = 0;
+					counter1 = i;
+				}
+				if (counter == word.length() - 1) {
+					System.out.print(word + ":");
+					counter1 = i;
+					for (int col = j + counter - 1; col >= j; col--) {
+						System.out.print(" " + "(" + col + "," + counter1 + ")");
+						counter = 0;
+						counter1++;
+					}
+					counter1 = 0;
+					wordSearch = word;
+					System.out.println("");
+				}
+			}
+		}
+		
+		return wordSearch;
+	}
 }
