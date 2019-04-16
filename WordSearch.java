@@ -26,11 +26,10 @@ public class WordSearch {
 		System.out.println("BONES, KHAN, KIRK, SCOTTY, SPOCK, SULU, UHURA");
 		
 		//creates an Array List for all of the names to be added to be searched
-		ArrayList<String> wordSearch;
+		ArrayList<String> wordSearch = new ArrayList();
+;
 		
-		//add all of the words
-		wordSearch = new ArrayList();
-		
+		//add all of the words		
 		wordSearch.add("BONES");
 		wordSearch.add("KHAN");
 		wordSearch.add("KIRK");
@@ -48,8 +47,9 @@ public class WordSearch {
 			rightToLeft(search);
 			Up(search);
 			Down(search);
-			diagUpRight(search);
+			//diagUpRight(search);
 			diagDownRight(search);
+			//diagUpLeft(search);
 		}
 	}
 	
@@ -270,4 +270,45 @@ public class WordSearch {
 		
 		return wordSearch;
 	}
+	
+	//write a function to read words diagonally up to the left
+	//it will be sort of like a zig zag function
+	//@Params word = the word to search
+	public static String diagUpLeft(String word) {
+		int counter = 0;
+		int counter1 = 0;
+		String wordSearch = "";
+		for (int i = 0; i < grid.length; i++) {
+			counter1 = i;
+			for (int j = grid[i].length - 1; j >= 0; j--) {
+				if(word.charAt(counter) == grid[counter1][j]) {
+					counter++;
+					counter1--;
+					if (counter1 < 0) {
+						//counter cannot be less than zero
+						//out of bounds
+						break;
+					}
+				}
+				else {
+					counter = 0;
+					counter1 = i;
+				}
+				if (counter == word.length()) {	
+					System.out.print(word + ":");
+					counter1 = i;
+					for (int col = j - counter + 1; col <= j; col++) {
+						System.out.print(" " + "(" + col + "," + counter1 + ")");
+						counter = 0;
+						counter1++;
+					}
+					counter1 = 0;
+					wordSearch = word;
+					System.out.println("");
+				}
+			}			
+		}
+		
+		return wordSearch;
+	}		
 }
